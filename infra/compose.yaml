@@ -1,9 +1,8 @@
 services:
   database:
+    container_name: "postgres-dev"
     image: "postgres:16.0-alpine3.18"
-    environment:
-      POSTGRES_USER: local_user
-      POSTGRES_PASSWORD: local_password
-      POSTGRES_DB: local_db
+    env_file:
+      - ../.env.development
     ports:
       - "5432:5432"
