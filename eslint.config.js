@@ -1,5 +1,5 @@
-// eslint.config.js
 import { defineConfig } from "eslint/config";
+import globals from "globals";
 
 export default defineConfig([
   {
@@ -8,6 +8,19 @@ export default defineConfig([
 
   {
     files: ["**/*.js", "**/*.jsx"],
+    languageOptions: {
+      ecmaVersion: "latest",
+      sourceType: "module",
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+      },
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+    },
     rules: {
       semi: "error",
       "prefer-const": "error",
